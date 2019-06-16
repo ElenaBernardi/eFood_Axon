@@ -24,8 +24,6 @@ public class ConsumerController {
     }
     @GetMapping
     public  List<ConsumerSummary> findAllConsumers(){
-        System.out.println("############################# fatta una query");
-
         return consumerService.findAll();
     }
 }

@@ -6,7 +6,7 @@ import javax.persistence.NamedQuery;
 import java.util.Objects;
 
 @Entity
-@NamedQuery(name="ConsumerSummary.findAll", query="SELECT c FROM ConsumerSummary c")
+@NamedQuery(name="ConsumerSummary.findAllConsumers", query="SELECT c FROM ConsumerSummary c")
 
 public class ConsumerSummary {
     @Id

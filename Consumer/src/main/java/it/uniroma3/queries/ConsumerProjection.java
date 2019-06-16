@@ -1,13 +1,10 @@
 package it.uniroma3.queries;
 
-import it.uniroma3.domain.Consumer;
 import it.uniroma3.domain.ConsumerSummary;
 import it.uniroma3.events.NewConsumerEvent;
-import lombok.extern.slf4j.XSlf4j;
 import org.axonframework.eventhandling.EventHandler;
 import org.axonframework.queryhandling.QueryHandler;
 import org.axonframework.queryhandling.QueryUpdateEmitter;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.EntityManager;
@@ -29,19 +26,16 @@ public class ConsumerProjection {
 
         ConsumerSummary consumerSummary = new ConsumerSummary(evt.getId(), evt.getNome(), evt.getCognome());
         entityManager.persist(consumerSummary);
-        queryUpdateEmitter.emit(FindAllQuery.class,
+        queryUpdateEmitter.emit(FindAllConsumersQuery.class,
                 query -> true,
                 consumerSummary
         );
     }
     @QueryHandler
-    public List<ConsumerSummary> handle(FindAllQuery query){
-        System.out.println("############################# Prima del jpaQuery");
+    public List<ConsumerSummary> handle(FindAllConsumersQuery query){
 
         TypedQuery<ConsumerSummary> jpaQuery =
-                entityManager.createNamedQuery("ConsumerSummary.findAll", ConsumerSummary.class);
-        System.out.println("#############################");
-        System.out.println(jpaQuery.getResultList());
+                entityManager.createNamedQuery("ConsumerSummary.findAllConsumers", ConsumerSummary.class);
         return jpaQuery.getResultList();
 
     }
