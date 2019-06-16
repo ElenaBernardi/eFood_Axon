@@ -1,0 +1,17 @@
+version: '3'
+services:
+  axonserver:
+    image: axoniq/axonserver
+    ports:
+      - 8024:8024
+      - 8124:8124
+    hostname: axonserver
+    environment:
+      AXONSERVER_HOSTNAME: axonserver
+  consumer:
+    build: Consumer
+    ports:
+      - 8082:8080
+    links:
+      - axonserver
+
