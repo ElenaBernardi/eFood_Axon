@@ -1,0 +1,11 @@
+package it.uniroma3.domain;
+
+public enum OrderState {
+    PENDING,
+    CONSUMER_APPROVED,
+    KITCHEN_APPROVED,
+    APPROVED,
+    INVALID,
+    TICKET_CREATED,
+    TICKET_CREATED_AND_CONSUMER_APPROVED
+}
