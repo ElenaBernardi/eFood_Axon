@@ -1,21 +1,25 @@
 package it.uniroma3.domain;
 
 import it.uniroma3.commands.NewOrderCommand;
+import it.uniroma3.queries.FindAllOrdersQuery;
 import org.axonframework.commandhandling.gateway.CommandGateway;
+import org.axonframework.messaging.responsetypes.ResponseTypes;
+import org.axonframework.queryhandling.QueryGateway;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
 
 @Service
 @Transactional
 public class OrderService implements IOrderService {
-
-    private final CommandGateway commandGateway;
-    public OrderService(CommandGateway commandGateway){
-        this.commandGateway = commandGateway;
-    }
+    @Autowired
+    private CommandGateway commandGateway;
+    @Autowired
+    private QueryGateway queryGateway;
 
     @Override
     public CompletableFuture<String> newOrder(NewOrderDTO newOrderDTO) {
@@ -26,6 +30,11 @@ public class OrderService implements IOrderService {
 
         return commandGateway.send(cmd);
 
+    }
+    @Override
+    public List<OrderSummary> findAll() {
+        return queryGateway.query(
+                new FindAllOrdersQuery(), ResponseTypes.multipleInstancesOf(OrderSummary.class)).join();
     }
 
 }

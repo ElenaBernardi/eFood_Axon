@@ -1,18 +1,16 @@
 package it.uniroma3.domain;
-import org.axonframework.modelling.command.EntityId;
 
 import javax.persistence.Embeddable;
-import javax.persistence.Id;
-public class OrderLineItem {
-    @EntityId
+
+@Embeddable
+public class LineItem {
     private String lineItemId;
     private String menuItemId;
     private int quantity;
 
-    public OrderLineItem() {
-    }
+    public LineItem(){}
 
-    public OrderLineItem(String lineItemId, String menuItemId, int quantity) {
+    public LineItem(String lineItemId, String menuItemId, int quantity) {
         this.lineItemId = lineItemId;
         this.menuItemId = menuItemId;
         this.quantity = quantity;
