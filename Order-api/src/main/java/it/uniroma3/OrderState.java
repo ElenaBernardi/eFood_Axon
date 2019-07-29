@@ -1,4 +1,4 @@
-package it.uniroma3.domain;
+package it.uniroma3;
 
 public enum OrderState {
     PENDING,

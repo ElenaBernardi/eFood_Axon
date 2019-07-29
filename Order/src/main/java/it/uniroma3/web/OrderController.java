@@ -3,13 +3,10 @@ package it.uniroma3.web;
 import io.swagger.annotations.Api;
 import it.uniroma3.domain.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
-import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping(path="/orders")

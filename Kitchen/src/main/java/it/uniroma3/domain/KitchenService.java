@@ -21,11 +21,6 @@ public class KitchenService implements IKitchenService{
 
 
     @Override
-    public CompletableFuture<String> newTicket(NewTicketDTO newTicketDTO){
-        NewTicketCommand cmd = new NewTicketCommand(UUID.randomUUID().toString(), newTicketDTO.getOrderId(), newTicketDTO.getRestaurantId());
-        return commandGateway.send(cmd);
-    }
-    @Override
     public List<TicketSummary> findAll() {
         return queryGateway.query(
                 new FindAllTicketsQuery(), ResponseTypes.multipleInstancesOf(TicketSummary.class)).join();

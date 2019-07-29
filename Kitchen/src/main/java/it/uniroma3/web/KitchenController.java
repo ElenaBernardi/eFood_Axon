@@ -17,10 +17,10 @@ public class KitchenController {
     @Autowired
     private IKitchenService kitchenService;
 
-    @PostMapping
+    /*@PostMapping
     public CompletableFuture<String> newTicket(@RequestBody NewTicketDTO newTicketDTO){
         return kitchenService.newTicket(newTicketDTO);
-    }
+    }*/
     @GetMapping
     public List<TicketSummary> findAllTickets(){
         return kitchenService.findAll();

@@ -1,22 +1,19 @@
 package it.uniroma3.events;
-
-import it.uniroma3.domain.OrderState;
-import it.uniroma3.domain.OrderLineItem;
+import it.uniroma3.domain.LineItem;
+import it.uniroma3.OrderState;
 
 import java.util.List;
 
 public class NewOrderEvent extends BaseEvent<String> {
     private String consumerId;
     private String restaurantId;
-    private String ticketId;
-    private List<OrderLineItem> lineItems;
+    private List<LineItem> lineItems;
     private OrderState state;
 
-    public NewOrderEvent(String id, String consumerId, String restaurantId, String ticketId, OrderState state, List<OrderLineItem> lineItems) {
+    public NewOrderEvent(String id, String consumerId, String restaurantId, OrderState state, List<LineItem> lineItems) {
         super(id);
         this.consumerId = consumerId;
         this.restaurantId = restaurantId;
-        this.ticketId = ticketId;
         this.lineItems = lineItems;
         this.state = state;
     }
@@ -37,19 +34,11 @@ public class NewOrderEvent extends BaseEvent<String> {
         this.restaurantId = restaurantId;
     }
 
-    public String getTicketId() {
-        return ticketId;
-    }
-
-    public void setTicketId(String ticketId) {
-        this.ticketId = ticketId;
-    }
-
-    public List<OrderLineItem> getLineItems() {
+    public List<LineItem> getLineItems() {
         return lineItems;
     }
 
-    public void setLineItems(List<OrderLineItem> lineItems) {
+    public void setLineItems(List<LineItem> lineItems) {
         this.lineItems = lineItems;
     }
 

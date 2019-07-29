@@ -1,11 +1,12 @@
-package it.uniroma3.domain;
+package it.uniroma3.web;
+
+import it.uniroma3.domain.OrderLineItem;
 
 import java.util.List;
 
 public class NewOrderDTO {
     private String consumerId;
     private String restaurantId;
-    private String ticketId;
     private List<OrderLineItem> lineItems;
 
     public String getConsumerId() {
@@ -22,14 +23,6 @@ public class NewOrderDTO {
 
     public void setRestaurantId(String restaurantId) {
         this.restaurantId = restaurantId;
-    }
-
-    public String getTicketId() {
-        return ticketId;
-    }
-
-    public void setTicketId(String ticketId) {
-        this.ticketId = ticketId;
     }
 
     public List<OrderLineItem> getLineItems() {

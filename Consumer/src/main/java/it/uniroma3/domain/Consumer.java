@@ -1,6 +1,11 @@
 package it.uniroma3.domain;
 
+import it.uniroma3.commands.CheckConsumerIdCommand;
+import it.uniroma3.commands.ConsumerApprovedCommand;
+import it.uniroma3.commands.ConsumerDisapprovedCommand;
 import it.uniroma3.commands.NewConsumerCommand;
+import it.uniroma3.events.ConsumerApprovedEvent;
+import it.uniroma3.events.ConsumerDisapprovedEvent;
 import it.uniroma3.events.NewConsumerEvent;
 import org.axonframework.commandhandling.CommandHandler;
 import org.axonframework.eventsourcing.EventSourcingHandler;
@@ -21,6 +26,19 @@ public class Consumer {
     @CommandHandler
     public Consumer(NewConsumerCommand cmd){
         apply(new NewConsumerEvent(cmd.getId(), cmd.getNome(), cmd.getCognome()));
+    }
+    @CommandHandler
+    public void on(CheckConsumerIdCommand cmd){
+        System.out.println("############ consumer approved ############");
+        apply(new ConsumerApprovedEvent(cmd.getOrderId(),cmd.getTicketId()));
+    }
+    @CommandHandler
+    public void on(ConsumerApprovedCommand cmd){
+        apply(new ConsumerApprovedEvent(cmd.getOrderId(),cmd.getTicketId()));
+    }
+    @CommandHandler
+    public void on(ConsumerDisapprovedCommand cmd){
+        apply(new ConsumerDisapprovedEvent(cmd.getOrderId(),cmd.getTicketId()));
     }
     @EventSourcingHandler
     public void on(NewConsumerEvent evt){

@@ -2,4 +2,7 @@ rootProject.name = 'eFood_Axon'
 include 'Consumer'
 include 'Kitchen'
 include 'Order'
+include 'Order-api'
+include 'Consumer-api'
+include 'Kitchen-api'
 

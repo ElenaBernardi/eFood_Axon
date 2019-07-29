@@ -1,11 +1,17 @@
 package it.uniroma3.domain;
 
-import org.axonframework.modelling.command.AggregateMember;
+import it.uniroma3.OrderState;
 
-import javax.persistence.*;
+import javax.persistence.ElementCollection;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.NamedQuery;
 import java.util.List;
+
 @Entity
-@NamedQuery(name="OrderSummary.findAllOrders", query="SELECT c FROM OrderSummary c join fetch c.orderLineItems")
+@NamedQuery(name="OrderSummary.findAllOrders", query="SELECT c " +
+                                                     "FROM OrderSummary c " +
+                                                        "join fetch c.orderLineItems")
 
 public class OrderSummary {
     @Id
@@ -21,11 +27,10 @@ public class OrderSummary {
     public OrderSummary() {
     }
 
-    public OrderSummary(String id, String restaurantId, String consumerId, String ticketId, OrderState orderState, List<LineItem> orderLineItems) {
+    public OrderSummary(String id, String restaurantId, String consumerId, OrderState orderState, List<LineItem> orderLineItems) {
         this.id = id;
         this.restaurantId = restaurantId;
         this.consumerId = consumerId;
-        this.ticketId = ticketId;
         this.orderState = orderState;
         this.orderLineItems = orderLineItems;
     }

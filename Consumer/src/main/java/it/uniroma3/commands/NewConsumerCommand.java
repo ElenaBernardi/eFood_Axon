@@ -1,6 +1,6 @@
 package it.uniroma3.commands;
 
-public class NewConsumerCommand extends BaseCommand<String> {
+public class NewConsumerCommand extends BaseCommand1<String> {
     private String nome;
     private String cognome;
 

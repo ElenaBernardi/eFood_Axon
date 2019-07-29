@@ -14,4 +14,5 @@ public class AxonConfig {
         EventSourcingRepository<Ticket> repository = EventSourcingRepository.builder(Ticket.class).eventStore(eventStore).build();
         return repository;
     }
+
 }

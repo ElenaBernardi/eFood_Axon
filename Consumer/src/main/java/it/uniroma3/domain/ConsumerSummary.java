@@ -7,7 +7,8 @@ import java.util.Objects;
 
 @Entity
 @NamedQuery(name="ConsumerSummary.findAllConsumers", query="SELECT c FROM ConsumerSummary c")
-
+@NamedQuery(name = "ConsumerSummary.findAllOrdersByConsumerId", query="SELECT o.id, c.id FROM ConsumerSummary c JOIN OrderSummary o ON c.id=o.consumerId ")
+//@NamedQuery(name = "ConsumerSummary.findAllOrdersByConsumerId", query="SELECT o.id FROM OrderSummary o ")
 public class ConsumerSummary {
     @Id
     private String id;

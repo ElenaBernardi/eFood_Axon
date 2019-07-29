@@ -13,15 +13,17 @@ public class TicketSummary {
     private String orderId;
     private TicketState state;
     private String restaurantId;
+    private String consumerId;
 
     public TicketSummary() {
     }
 
-    public TicketSummary(String id, String orderId, TicketState state, String restaurantId) {
+    public TicketSummary(String id, String orderId, TicketState state, String restaurantId, String consumerId) {
         this.id = id;
         this.orderId = orderId;
         this.state = state;
         this.restaurantId = restaurantId;
+        this.consumerId = consumerId;
     }
 
     public String getId() {
@@ -56,29 +58,11 @@ public class TicketSummary {
         this.restaurantId = restaurantId;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        TicketSummary that = (TicketSummary) o;
-        return id.equals(that.id) &&
-                orderId.equals(that.orderId) &&
-                state == that.state &&
-                restaurantId.equals(that.restaurantId);
+    public String getConsumerId() {
+        return consumerId;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, orderId, state, restaurantId);
-    }
-
-    @Override
-    public String toString() {
-        return "TicketSummary{" +
-                "id='" + id + '\'' +
-                ", orderId='" + orderId + '\'' +
-                ", state=" + state +
-                ", restaurantId='" + restaurantId + '\'' +
-                '}';
+    public void setConsumerId(String consumerId) {
+        this.consumerId = consumerId;
     }
 }
